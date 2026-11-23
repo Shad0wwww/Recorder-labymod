@@ -3,12 +3,11 @@ package com.magnus.mintmc.core.listener;
 import com.magnus.mintmc.core.RecorderConfiguration;
 import com.magnus.mintmc.core.RecorderService;
 import net.labymod.api.client.gui.screen.key.Key;
-import net.labymod.api.event.Phase;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.input.KeyEvent;
 import net.labymod.api.event.client.input.KeyEvent.State;
+import net.labymod.api.event.client.lifecycle.GameFpsLimitEvent;
 import net.labymod.api.event.client.lifecycle.ShutdownEvent;
-import net.labymod.api.event.client.render.GameRenderEvent;
 
 public class RecorderListener {
 
@@ -20,12 +19,14 @@ public class RecorderListener {
     this.config = config;
   }
 
+  /**
+   * Fired once per frame by the frame limiter, after the frame is finished and before the next
+   * one clears the main target. Only then does the main target hold the whole frame with the gui
+   * on every version; during the render event it is already cleared or still empty on some.
+   */
   @Subscribe
-  public void onGameRender(GameRenderEvent event) {
-    // After the frame, the main target holds the world and the gui
-    if (event.phase() == Phase.POST) {
-      this.recorder.onFrame();
-    }
+  public void onFrameEnd(GameFpsLimitEvent event) {
+    this.recorder.onFrame();
   }
 
   @Subscribe
