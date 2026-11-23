@@ -1,3 +1,5 @@
+import net.labymod.labygradle.common.internal.labymod.addon.model.AddonPermission
+
 plugins {
     id("net.labymod.labygradle")
     id("net.labymod.labygradle.addon")
@@ -24,11 +26,12 @@ labyMod {
 
     addonInfo {
         namespace = "mintmc"
-        displayName = "recorder"
+        displayName = "Recorder"
         author = "Magnus"
-        description = ""
+        description = "Medal-like instant replay clips and screen recording for the Laby Client"
         minecraftVersion = "*"
         version = rootProject.version.toString()
+        permission(AddonPermission.FILE_SYSTEM, AddonPermission.EXTERNAL_SERVERS_GET)
     }
 }
 

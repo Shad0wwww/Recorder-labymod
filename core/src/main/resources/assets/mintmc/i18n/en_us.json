@@ -1,9 +1,99 @@
 {
   "mintmc": {
     "settings": {
+      "name": "Recorder",
       "enabled": {
         "name": "Enabled"
+      },
+      "replayBuffer": {
+        "name": "Instant Replay",
+        "description": "Keeps the last seconds in memory so you can save them as a clip at any time."
+      },
+      "clipKey": {
+        "name": "Save Clip"
+      },
+      "clipLength": {
+        "name": "Clip Length (seconds)"
+      },
+      "recordKey": {
+        "name": "Start / Stop Recording"
+      },
+      "resolution": {
+        "name": "Resolution",
+        "entries": {
+          "p480": "480p",
+          "p720": "720p",
+          "p1080": "1080p",
+          "native": "Window Size"
+        }
+      },
+      "frameRate": {
+        "name": "Frame Rate"
+      },
+      "quality": {
+        "name": "Quality"
+      },
+      "notifications": {
+        "name": "Notifications"
+      },
+      "openFolder": {
+        "name": "Recordings Folder",
+        "text": "Open"
+      },
+      "header": {
+        "clips": {
+          "name": "Clips"
+        },
+        "recording": {
+          "name": "Recording"
+        },
+        "video": {
+          "name": "Video"
+        },
+        "misc": {
+          "name": "Miscellaneous"
+        }
       }
+    },
+    "hudWidgetCategory": {
+      "recorder": {
+        "name": "Recorder",
+        "description": "Widgets of the Recorder addon"
+      }
+    },
+    "hudWidget": {
+      "recorder": {
+        "name": "Recorder",
+        "description": "Shows whether Instant Replay or a recording is running",
+        "status": "Recorder",
+        "time": "Time",
+        "buffer": "Replay",
+        "recording": "● REC",
+        "replay": "Instant Replay",
+        "idle": "Idle",
+        "disabled": "Disabled",
+        "showBuffer": {
+          "name": "Show Replay Length"
+        }
+      }
+    },
+    "notification": {
+      "title": "Recorder",
+      "clipSaved": "Clip saved: %s (%s s)",
+      "recordingSaved": "Recording saved: %s (%s s)",
+      "recordingStarted": "Recording started",
+      "bufferDisabled": "Instant Replay is turned off",
+      "bufferEmpty": "Nothing recorded yet",
+      "unsupported": "The game can't be recorded on this graphics backend",
+      "saveFailed": "The video could not be saved, see the log",
+      "openFolder": "Open Folder"
+    },
+    "command": {
+      "usage": "Usage: /recorder <clip|record|folder>",
+      "clip": "Saving clip...",
+      "recordStarted": "Recording started",
+      "recordStopped": "Recording stopped, saving...",
+      "folder": "Opening the recordings folder"
     }
   }
 }
